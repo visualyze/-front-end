@@ -1,0 +1,42 @@
+.widget {
+  position: absolute;
+  cursor: pointer; 
+  z-index: 2;
+  box-sizing: border-box;
+  overflow: visible;
+  background-color: #212121;
+  line-height: normal;
+}
+
+.grip {
+  font-size: 20px;
+  height: 20px;
+  width: 20ps;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  cursor: nwse-resize;
+  line-height: 1em;
+}
+
+.resizer {
+  background-color: rgba(65, 0, 218, 0.315);
+  position: fixed;
+  z-index:5;
+}
+
+.WidgetDelete {
+  font-size: 20px;
+  height: 20px;
+  width: 20ps;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+  line-height: 1em;
+  transition: color 0.5 ms;
+}
+
+.WidgetDelete:hover {
+  color: rgb(102, 102, 102);
+}

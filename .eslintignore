@@ -1,0 +1,15 @@
+node_modules/**
+**/node_modules
+**/docs
+**/middleware/404.js
+**/middleware/500.js
+**/middleware.test.js
+**/components.test.js
+**/modal.js
+**/form.js
+**/typedRow.js
+**/app.js
+**/context.js
+**/index.js
+**/todo-connected.js
+**/todo.js
