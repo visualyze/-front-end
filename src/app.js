@@ -9,10 +9,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // if we change the size of the window, the tiles will also change
       height: window.innerHeight,
       width: window.innerWidth,
       showingPickerFor: null,
-      widgetConfigs: [],
+      widgetConfigs: []
     };
     window.addEventListener('resize', this.handleSizeChange);
     appEvents.onPlusClick = this.handleOnPlusClick;
@@ -21,31 +22,30 @@ export default class App extends React.Component {
     appEvents.onWidgetDelete = this.handleWidgetDelete;
   }
 
-  handleOnPlusClick = (tile) => {
+  handleOnPlusClick = tile => {
     this.setState({ showingPickerFor: tile.props.id });
-  }
+  };
 
   handleAbortPicker = () => {
     this.setState({ showingPickerFor: null });
-  }
+  };
 
   handleWidgetCreated = (tileId, kind) => {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
-    // This is temporary, we want to replace this with whatever we choose
-    // in a selection menu of which widget we want to add. For now, always clock
+    // This sets the widget of kind and size at location tileId
     widgetConfigs[tileId] = {
       tileId: tileId,
       kind: kind,
       numOfTilesW: 1,
-      numOfTilesH: 1,
+      numOfTilesH: 1
     };
 
     this.setState({ widgetConfigs, showingPickerFor: null });
-  }
+  };
 
-  handleWidgetDelete = (tileId) => {
+  handleWidgetDelete = tileId => {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
@@ -53,21 +53,21 @@ export default class App extends React.Component {
     delete widgetConfigs[tileId];
     // We rerender without the deleted widget
     this.setState({ widgetConfigs });
-  }
+  };
 
-  handleWidgetConfig = (widgetConfig) => {
+  handleWidgetConfig = widgetConfig => {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
     widgetConfigs[widgetConfig.tileId] = widgetConfig;
     this.setState({ widgetConfigs });
-  }
+  };
 
   handleSizeChange = () => {
     this.setState({
       height: window.innerHeight,
-      width: window.innerWidth,
+      width: window.innerWidth
     });
-  }
+  };
 
   render() {
     return (

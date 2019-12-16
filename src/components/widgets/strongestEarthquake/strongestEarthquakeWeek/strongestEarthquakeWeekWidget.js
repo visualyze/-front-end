@@ -2,16 +2,16 @@ import React from 'react';
 import Highcharts from 'highcharts/js/highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsMore from 'highcharts/highcharts-more';
-import SolidGauge from "highcharts/modules/solid-gauge.js";
-import Widget from '../widget.js';
+import SolidGauge from 'highcharts/modules/solid-gauge.js';
+import Widget from '../../widget.js';
 import $ from 'jquery';
-import '../../dark-unica.scss';
-import './strongestEarthquakeWidget.scss';
+import '../../../dark-unica.scss';
+import './strongestEarthquakeWeekWidget.scss';
 
 HighchartsMore(Highcharts);
 SolidGauge(Highcharts);
 
-class StrongestEarthquakeWidget extends Widget {
+class StrongestEarthquakeWeekWidget extends Widget {
   constructor(props) {
     super(props);
     this.state.strongestEarthquake = 0;
@@ -25,16 +25,15 @@ class StrongestEarthquakeWidget extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: "http://localhost:3333/api/strongestEarthquake",
-    }).done((result) => {
-      console.log('RESULTTTTTTTTTTTTTTTTTTTTTTT', result);
+      url: 'http://localhost:3333/api/strongestEarthquakeWeek'
+    }).done(result => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,
         strongestLocation: result.strongestLocation,
         isLoading: false
       });
     });
-  }
+  };
 
   getOptions = () => {
     return {
@@ -42,11 +41,15 @@ class StrongestEarthquakeWidget extends Widget {
         type: 'solidgauge',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
 
       title: {
-        text: this.state.strongestLocation,
+        text: this.state.strongestLocation
+      },
+
+      subtitle: {
+        text: '1 Week'
       },
 
       pane: {
@@ -74,13 +77,13 @@ class StrongestEarthquakeWidget extends Widget {
         tickAmount: 2,
         title: {
           y: -70,
-          text: null,
+          text: null
         },
         labels: {
           y: 16
         },
         min: 0,
-        max: 10,
+        max: 10
       },
 
       credits: {
@@ -98,18 +101,17 @@ class StrongestEarthquakeWidget extends Widget {
       },
 
       legend: {
-        enabled: false,
+        enabled: false
       },
-
 
       series: [
         {
           name: 'magnitude',
-          data: [this.state.strongestEarthquake],
+          data: [this.state.strongestEarthquake]
         }
       ]
     };
-  }
+  };
 
   renderWidget() {
     const options = this.getOptions();
@@ -121,10 +123,12 @@ class StrongestEarthquakeWidget extends Widget {
       return <div className="StrongestEarthquake">(Resizing in progress)</div>;
     }
 
-    return <div className="StrongestEarthquake">
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>;
+    return (
+      <div className="StrongestEarthquake">
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
+    );
   }
 }
 
-export default StrongestEarthquakeWidget;
+export default StrongestEarthquakeWeekWidget;
