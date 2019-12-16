@@ -1,0 +1,15 @@
+#nav {
+  display: inline-block;
+}
+
+li {
+  display: inline-block;
+  color: white;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
