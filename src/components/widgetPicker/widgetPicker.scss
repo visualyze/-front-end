@@ -1,0 +1,41 @@
+.WidgetPicker {
+  width: 70%;
+  top: 50%;
+  left: 50%;
+  border-radius: 20px;
+  background-color: #282828;
+  color: #eee;
+  position: fixed;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  line-height: normal;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 11;
+}
+
+.WidgetPickerHeader {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.WidgetPickerOption {
+  display: inline-block;
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  vertical-align: top;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.WidgetPickerOption:hover {
+  background-color: #424242;
+  border-radius: 10px;
+}
+
+.WidgetPickerImage {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,36 @@
+.tile {
+  background-color: #191919;
+  transition: background-color 0.4s;
+  display: inline-block;
+  position: relative;
+  overflow: visible;
+}
+
+.resizedTile {
+  background-color: #4d4d4d7c !important;
+}
+
+.tile:hover {
+  background-color: #212121;
+}
+
+.plusDiv {
+  background-image: url("/images/plus.png");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  height: 32px;
+  transition: all 0.5s;
+  width: 32px;
+  background-size: 28px;
+  filter: saturate(0%);
+  top: calc(50% - (16px));
+  left: calc(50% - (16px));
+  position: absolute;
+}
+
+.plusDiv:hover {
+  background-size: 32px;
+  filter: saturate(100%);
+  top: calc(50% - (16px));
+  left: calc(50% - (16px));
+}
