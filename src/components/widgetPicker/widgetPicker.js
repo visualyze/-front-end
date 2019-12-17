@@ -61,6 +61,50 @@ class WidgetPicker extends React.Component {
             <img className="WidgetPickerImage" src="/images/plus.png" />
             <div className="WidgetPickerName">Strongest Magnitude (1 week)</div>
           </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(this.props.tile, 'depthCorrelationWeek')
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Depth Correlation (1 week)</div>
+          </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(
+                this.props.tile,
+                'strongestEarthquakeMonth'
+              )
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">
+              Strongest Magnitude (1 month)
+            </div>
+          </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(
+                this.props.tile,
+                'depthCorrelationMonth'
+              )
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Depth Correlation (1 month)</div>
+          </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(this.props.tile, 'usPopulation')
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">US Population</div>
+          </div>
         </div>
       </>
     );

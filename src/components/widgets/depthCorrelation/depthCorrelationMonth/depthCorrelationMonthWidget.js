@@ -1,12 +1,12 @@
 import React from 'react';
 import Highcharts from 'highcharts/js/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import Widget from '../widget.js';
+import Widget from '../../widget.js';
 import $ from 'jquery';
-import '../../dark-unica.scss';
-import './depthCorrelationWidget.scss';
+import '../../../dark-unica.scss';
+import './depthCorrelationMonthWidget.scss';
 
-class DepthCorrelation extends Widget {
+class DepthCorrelationMonth extends Widget {
   constructor(props) {
     super(props);
     this.state.series = [];
@@ -19,7 +19,7 @@ class DepthCorrelation extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: 'http://localhost:3333/api/depthCorrelation'
+      url: 'http://localhost:3333/api/depthCorrelationMonth'
     }).done(result => {
       this.setState({ series: result.series, isLoading: false });
     });
@@ -40,7 +40,7 @@ class DepthCorrelation extends Widget {
       },
 
       subtitle: {
-        text: 'Last 24 Hours'
+        text: 'Last Month'
       },
 
       yAxis: {
@@ -102,4 +102,4 @@ class DepthCorrelation extends Widget {
   }
 }
 
-export default DepthCorrelation;
+export default DepthCorrelationMonth;
