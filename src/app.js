@@ -4,6 +4,9 @@ import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
 import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import './app.scss';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default class App extends React.Component {
   constructor(props) {

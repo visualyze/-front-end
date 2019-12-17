@@ -19,11 +19,11 @@ class DepthCorrelation extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: "http://localhost:3333/api/depthCorrelation",
-    }).done((result) => {
+      url: `http://localhost:3333/api/depthCorrelation`
+    }).done(result => {
       this.setState({ series: result.series, isLoading: false });
     });
-  }
+  };
 
   getOptions = () => {
     return {
@@ -32,11 +32,11 @@ class DepthCorrelation extends Widget {
         width: this.getTileWidth(),
         height: this.getTileHeight(),
         styledMode: true,
-        zoomType: 'xy',
+        zoomType: 'xy'
       },
 
       title: {
-        text: 'Depth Correlation',
+        text: 'Depth Correlation'
       },
 
       subtitle: {
@@ -60,13 +60,13 @@ class DepthCorrelation extends Widget {
       },
 
       legend: {
-        enabled: false,
+        enabled: false
       },
 
       plotOptions: {
         scatter: {
           marker: {
-            radius: 2,
+            radius: 2
           }
         }
       },
@@ -78,11 +78,11 @@ class DepthCorrelation extends Widget {
       series: [
         {
           name: 'Earthquake',
-          data: this.state.series,
+          data: this.state.series
         }
       ]
     };
-  }
+  };
 
   renderWidget() {
     const options = this.getOptions();
@@ -94,9 +94,11 @@ class DepthCorrelation extends Widget {
       return <div className="DepthCorrelation">(Resizing in progress)</div>;
     }
 
-    return <div className="DepthCorrelation">
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>;
+    return (
+      <div className="DepthCorrelation">
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
+    );
   }
 }
 

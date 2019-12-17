@@ -19,16 +19,14 @@ class HourlyEarthqakesWidget extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: "http://localhost:3333/api/hourlyEarthquakes",
-    }).done((result) => {
+      url: `http://localhost:3333/api/hourlyEarthquakes`
+    }).done(result => {
       // We map [["123456": 1]] to [[123456: 1]]
-      const series = result.map((pair) => [
-        Number.parseInt(pair[0]), pair[1]
-      ]);
+      const series = result.map(pair => [Number.parseInt(pair[0]), pair[1]]);
       console.log(series);
       this.setState({ series: series, isLoading: false });
     });
-  }
+  };
 
   getOptions = () => {
     return {
@@ -36,39 +34,38 @@ class HourlyEarthqakesWidget extends Widget {
         type: 'line',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
 
       title: {
-        text: 'Hourly Earthquakes (24h)',
+        text: 'Hourly Earthquakes (24h)'
       },
 
       yAxis: {
         title: {
-          enabled: false,
+          enabled: false
         }
       },
 
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
-          hour: '%I %p',
+          hour: '%I %p'
         },
         labels: {
-          format: "{value:%I %p}",
-          style: { fontSize: "8px" }
+          format: '{value:%I %p}',
+          style: { fontSize: '8px' }
         },
 
-        tickInterval: 1000 * 60 * 60, // tick every hour
+        tickInterval: 1000 * 60 * 60 // tick every hour
       },
 
       legend: {
-        enabled: false,
+        enabled: false
       },
 
       plotOptions: {
-        series: {
-        }
+        series: {}
       },
 
       credits: {
@@ -78,11 +75,11 @@ class HourlyEarthqakesWidget extends Widget {
       series: [
         {
           name: 'count',
-          data: this.state.series,
+          data: this.state.series
         }
       ]
     };
-  }
+  };
 
   renderWidget() {
     const options = this.getOptions();
@@ -94,9 +91,11 @@ class HourlyEarthqakesWidget extends Widget {
       return <div className="HourlyEarthquakes">(Resizing in progress)</div>;
     }
 
-    return <div className="HourlyEarthquakes">
-      <HighchartsReact highcharts={Highcharts} options={options} />
-    </div>;
+    return (
+      <div className="HourlyEarthquakes">
+        <HighchartsReact highcharts={Highcharts} options={options} />
+      </div>
+    );
   }
 }
 

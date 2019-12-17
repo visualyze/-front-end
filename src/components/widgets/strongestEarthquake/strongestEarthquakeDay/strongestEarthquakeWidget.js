@@ -8,6 +8,9 @@ import $ from 'jquery';
 import '../../../dark-unica.scss';
 import './strongestEarthquakeWidget.scss';
 
+const url = `http://localhost:3333/api/strongestEarthquake`;
+console.log(url);
+
 HighchartsMore(Highcharts);
 SolidGauge(Highcharts);
 
@@ -25,7 +28,7 @@ class StrongestEarthquakeWidget extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: 'http://localhost:3333/api/strongestEarthquake'
+      url: `${process.env.DEPLOYEDURL}api/strongestEarthquake`
     }).done(result => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,
