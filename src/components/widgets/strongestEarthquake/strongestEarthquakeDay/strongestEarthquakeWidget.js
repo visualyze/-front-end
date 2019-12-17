@@ -28,7 +28,7 @@ class StrongestEarthquakeWidget extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: url
+      url: `${process.env.DEPLOYEDURL}api/strongestEarthquake`
     }).done(result => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,
