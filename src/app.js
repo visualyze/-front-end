@@ -4,6 +4,7 @@ import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
 import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
+import $ from 'jquery';
 import './app.scss';
 import dotenv from 'dotenv';
 
@@ -84,9 +85,13 @@ export default class App extends React.Component {
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
+
+
     widgetConfigs[this.state.showingTextInputFor][
       this.state.showingTextInputField
     ] = text;
+
+
 
     this.setState({ showingTextInputFor: null, widgetConfigs });
   };
