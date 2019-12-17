@@ -1,6 +1,6 @@
 .widget {
   position: absolute;
-  cursor: pointer; 
+  cursor: pointer;
   z-index: 2;
   box-sizing: border-box;
   overflow: visible;
@@ -11,7 +11,7 @@
 .grip {
   font-size: 20px;
   height: 20px;
-  width: 20ps;
+  width: 20px;
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -22,13 +22,13 @@
 .resizer {
   background-color: rgba(65, 0, 218, 0.315);
   position: fixed;
-  z-index:5;
+  z-index: 5;
 }
 
 .WidgetDelete {
   font-size: 20px;
   height: 20px;
-  width: 20ps;
+  width: 20px;
   position: absolute;
   right: 5px;
   top: 5px;

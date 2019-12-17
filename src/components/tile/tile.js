@@ -6,7 +6,13 @@ import ClockWidget from '../widgets/clock/clockWidget.js';
 import HourlyEarthqakesWidget from '../widgets/hourlyEarthquakes/hourlyEarthqakesWidget.js';
 import StrongestEarthquakeWidget from '../widgets/strongestEarthquake//strongestEarthquakeDay/strongestEarthquakeWidget.js';
 import DepthCorrelationWidget from '../widgets/depthCorrelation/depthCorrelationWidget.js';
-import StrongestEarthquakeWeek from '../widgets/strongestEarthquake/strongestEarthquakeWeek/strongestEarthquakeWeekWidget.js';
+import StrongestEarthquakeWeekWidget from '../widgets/strongestEarthquake/strongestEarthquakeWeek/strongestEarthquakeWeekWidget.js';
+import DepthCorrelationWeekWidget from '../widgets/depthCorrelation/depthCorrelationWeek/depthCorrelationWeekWidget.js';
+import StrongestEarthquakeMonthWidget from '../widgets/strongestEarthquake/strongestEarthquakeMonth/strongestEarthquakeMonthWidget.js';
+import DepthCorrelationMonthWidget from '../widgets/depthCorrelation/depthCorrelationMonth/depthCorrelationMonthWidget.js';
+import UsPopulationWidget from '../widgets/usPopulation/usPopulationWidget.js';
+import CityWeatherWidget from '../widgets/weather/cityWeatherWidget.js';
+import VolcanoesByRegionWidget from '../widgets/volcanoes/volcanoesByRegionWidget.js';
 
 import './tile.scss';
 
@@ -59,7 +65,41 @@ class Tile extends React.Component {
         />
       ),
       strongestEarthquakeWeek: () => (
-        <StrongestEarthquakeWeek
+        <StrongestEarthquakeWeekWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
+      ),
+      depthCorrelationWeek: () => (
+        <DepthCorrelationWeekWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
+      ),
+      strongestEarthquakeMonth: () => (
+        <StrongestEarthquakeMonthWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
+      ),
+      depthCorrelationMonth: () => (
+        <DepthCorrelationMonthWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
+      ),
+      usPopulation: () => (
+        <UsPopulationWidget config={widgetConfig} tileSize={size} tile={this} />
+      ),
+      cityWeather: () => (
+        <CityWeatherWidget config={widgetConfig} tileSize={size} tile={this} />
+      ),
+      volcanoesByRegion: () => (
+        <VolcanoesByRegionWidget
           config={widgetConfig}
           tileSize={size}
           tile={this}

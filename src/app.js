@@ -3,6 +3,7 @@ import appEvents from './appEvents.js';
 import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
 import WidgetPicker from './components/widgetPicker/widgetPicker.js';
+import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
 import './app.scss';
 import dotenv from 'dotenv';
 
@@ -16,6 +17,9 @@ export default class App extends React.Component {
       height: window.innerHeight,
       width: window.innerWidth,
       showingPickerFor: null,
+      showingTextInputFor: null,
+      showingTextInputField: null,
+      showingTextInputTitle: null,
       widgetConfigs: []
     };
     window.addEventListener('resize', this.handleSizeChange);
@@ -23,6 +27,8 @@ export default class App extends React.Component {
     appEvents.onUpdateWidgetConfig = this.handleWidgetConfig;
     appEvents.onWidgetCreated = this.handleWidgetCreated;
     appEvents.onWidgetDelete = this.handleWidgetDelete;
+    appEvents.onWidgetTextInput = this.handleWidgetTextInput;
+    appEvents.onTextInputEntered = this.handleTextInputEntered;
   }
 
   handleOnPlusClick = tile => {
@@ -46,6 +52,10 @@ export default class App extends React.Component {
     };
 
     this.setState({ widgetConfigs, showingPickerFor: null });
+
+    if (kind === 'cityWeather') {
+      appEvents.onWidgetTextInput(tileId, 'city', 'Location');
+    }
   };
 
   handleWidgetDelete = tileId => {
@@ -56,6 +66,29 @@ export default class App extends React.Component {
     delete widgetConfigs[tileId];
     // We rerender without the deleted widget
     this.setState({ widgetConfigs });
+  };
+
+  handleWidgetTextInput = (tileId, field, title) => {
+    this.setState({
+      showingTextInputFor: tileId,
+      showingTextInputField: field,
+      showingTextInputTitle: title
+    });
+  };
+
+  handleAbortTextInput = () => {
+    this.setState({ showingTextInputFor: null });
+  };
+
+  handleTextInputEntered = text => {
+    // Duplicate the object because we don't want to change the original one
+    const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
+
+    widgetConfigs[this.state.showingTextInputFor][
+      this.state.showingTextInputField
+    ] = text;
+
+    this.setState({ showingTextInputFor: null, widgetConfigs });
   };
 
   handleWidgetConfig = widgetConfig => {
@@ -83,6 +116,10 @@ export default class App extends React.Component {
         <When condition={this.state.showingPickerFor !== null}>
           <div className="modalCover" onClick={this.handleAbortPicker} />
           <WidgetPicker tile={this.state.showingPickerFor} />
+        </When>
+        <When condition={this.state.showingTextInputFor !== null}>
+          <div className="modalCover" onClick={this.handleAbortTextInput} />
+          <WidgetTextInput title={this.state.showingTextInputTitle} />
         </When>
       </>
     );

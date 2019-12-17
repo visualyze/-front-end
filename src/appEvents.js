@@ -4,6 +4,8 @@ class AppEvents {
   onUpdateWidgetConfig = () => {};
   onWidgetCreated = () => {};
   onWidgetDelete = () => {};
+  onWidgetTextInput = () => {};
+  onTextInputEntered = () => {};
 }
 
 const appEvents = new AppEvents();

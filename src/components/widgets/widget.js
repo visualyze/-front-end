@@ -56,6 +56,7 @@ class Widget extends React.Component {
 
     this.setState({
       isResizing: true,
+      isHover: false,
 
       resizeSrcX: rect.left,
       resizeSrcY: rect.top,
@@ -199,9 +200,10 @@ class Widget extends React.Component {
               &#9698;
             </div>
             <div
-              onMouseDown={() =>
-                appEvents.onWidgetDelete(this.props.tile.props.id)
-              }
+              onMouseDown={() => {
+                appEvents.onWidgetDelete(this.props.tile.props.id);
+                this.props.tile.setHover(false);
+              }}
               className="WidgetDelete"
             >
               X
