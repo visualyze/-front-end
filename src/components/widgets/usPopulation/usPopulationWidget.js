@@ -2,6 +2,7 @@ import React from 'react';
 import Highcharts from 'highcharts/js/highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsMore from 'highcharts/highcharts-more';
+import HeatMap from 'highcharts/modules/heatmap.js';
 import TileMap from 'highcharts/modules/tilemap.js';
 import Widget from '../widget.js';
 import $ from 'jquery';
@@ -9,6 +10,7 @@ import '../../dark-unica.scss';
 import './usPopulationWidget.scss';
 
 HighchartsMore(Highcharts);
+HeatMap(Highcharts);
 TileMap(Highcharts);
 
 class UsPopulation extends Widget {
@@ -26,7 +28,7 @@ class UsPopulation extends Widget {
       chart: {
         type: 'tilemap',
         inverted: true,
-        // width: this.getTileWidth(),
+        width: this.getTileWidth(),
         height: this.getTileHeight()
       },
 
@@ -36,7 +38,6 @@ class UsPopulation extends Widget {
         screenReaderSection: {
           beforeChartFormat:
             '<h5>{chartTitle}</h5>' +
-            '<div>{chartSubtitle}</div>' +
             '<div>{chartLongdesc}</div>' +
             '<div>{viewTableButton}</div>'
         },
@@ -49,14 +50,11 @@ class UsPopulation extends Widget {
           }
         }
       },
-
-      title: {
-        text: 'U.S. states by population in 2016'
+      credits: {
+        enabled: false
       },
-
-      subtitle: {
-        text:
-          'Source:<a href="https://simple.wikipedia.org/wiki/List_of_U.S._states_by_population">Wikipedia</a>'
+      title: {
+        text: 'U.S. Population 2016'
       },
 
       xAxis: {
@@ -65,6 +63,10 @@ class UsPopulation extends Widget {
 
       yAxis: {
         visible: false
+      },
+
+      legend: {
+        enabled: false
       },
 
       colorAxis: {

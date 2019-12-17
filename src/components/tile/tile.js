@@ -11,6 +11,8 @@ import DepthCorrelationWeekWidget from '../widgets/depthCorrelation/depthCorrela
 import StrongestEarthquakeMonthWidget from '../widgets/strongestEarthquake/strongestEarthquakeMonth/strongestEarthquakeMonthWidget.js';
 import DepthCorrelationMonthWidget from '../widgets/depthCorrelation/depthCorrelationMonth/depthCorrelationMonthWidget.js';
 import UsPopulationWidget from '../widgets/usPopulation/usPopulationWidget.js';
+import CityWeatherWidget from '../widgets/weather/cityWeatherWidget.js';
+import VolcanoesByRegionWidget from '../widgets/volcanoes/volcanoesByRegionWidget.js';
 
 import './tile.scss';
 
@@ -92,6 +94,16 @@ class Tile extends React.Component {
       ),
       usPopulation: () => (
         <UsPopulationWidget config={widgetConfig} tileSize={size} tile={this} />
+      ),
+      cityWeather: () => (
+        <CityWeatherWidget config={widgetConfig} tileSize={size} tile={this} />
+      ),
+      volcanoesByRegion: () => (
+        <VolcanoesByRegionWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
       )
     };
 

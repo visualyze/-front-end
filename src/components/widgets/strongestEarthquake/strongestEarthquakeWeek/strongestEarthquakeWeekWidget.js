@@ -25,7 +25,7 @@ class StrongestEarthquakeWeekWidget extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-      url: 'http://localhost:3333/api/strongestEarthquakeWeek'
+      url: `http://localhost:3333/api/strongestEarthquakeWeek`
     }).done(result => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,

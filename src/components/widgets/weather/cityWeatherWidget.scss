@@ -1,0 +1,15 @@
+.WidgetSettings {
+  font-size: 20px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 30px;
+  top: 5px;
+  cursor: pointer;
+  line-height: 1em;
+  transition: color 0.5 ms;
+}
+
+.WidgetSettings:hover {
+  color: rgb(102, 102, 102);
+}

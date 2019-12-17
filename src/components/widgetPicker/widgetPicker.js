@@ -105,6 +105,24 @@ class WidgetPicker extends React.Component {
             <img className="WidgetPickerImage" src="/images/plus.png" />
             <div className="WidgetPickerName">US Population</div>
           </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(this.props.tile, 'cityWeather')
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Weather</div>
+          </div>
+          <div
+            className="WidgetPickerOption"
+            onClick={() =>
+              appEvents.onWidgetCreated(this.props.tile, 'volcanoesByRegion')
+            }
+          >
+            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <div className="WidgetPickerName">Volcanoes by Region</div>
+          </div>
         </div>
       </>
     );
