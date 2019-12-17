@@ -19,11 +19,7 @@ class DepthCorrelation extends Widget {
   handleRefresh = () => {
     //TODO: make this configurable
     $.ajax({
-<<<<<<< HEAD
-      url: 'http://localhost:3333/api/depthCorrelation'
-=======
       url: `http://localhost:3333/api/depthCorrelation`
->>>>>>> master
     }).done(result => {
       this.setState({ series: result.series, isLoading: false });
     });
@@ -70,11 +66,7 @@ class DepthCorrelation extends Widget {
       plotOptions: {
         scatter: {
           marker: {
-<<<<<<< HEAD
             radius: 2.5
-=======
-            radius: 2
->>>>>>> master
           }
         }
       },
