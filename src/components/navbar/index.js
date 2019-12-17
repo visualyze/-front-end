@@ -6,7 +6,7 @@ const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   return (
     <>
-      <nav id="nav">
+      <nav id="navbar">
         <ul>
           <li>
             <Link className="link" to="/">

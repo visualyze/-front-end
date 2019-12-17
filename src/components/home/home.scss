@@ -1,3 +1,61 @@
-.backgroundContainer {
-  background-image: url('/images/visualyze-static-background.png');
+body {
+  background-image: url('/images/visualyze-background-3.png');
+  background-repeat: no-repeat;
+  background-color: #2ac9ff;
+  background-size: 100% 80%;
+  background-position: bottom;
+}
+#logoimg {
+  position: relative;
+  width: 60%;
+}
+
+#tagline {
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 150;
+  font-size: 3em;
+  margin-left: 3.5%;
+  color: black;
+  margin-top: -140px;
+}
+
+.button {
+  backface-visibility: hidden;
+  position: relative;
+  left: 25.5%;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  background: #446ade;
+  border-radius: 5px;
+  padding: 20px 24px 20px 24px;
+  color: #ffffff;
+  font-size: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 150;
+  font-style: normal;
+}
+.button > div {
+  color: #999999;
+  font-size: 10px;
+  font-family: Helvetica Neue;
+  font-weight: initial;
+  font-style: normal;
+  text-align: center;
+  margin: 0px 0px 0px 0px;
+}
+.button > i {
+  font-size: 1em;
+  border-radius: 0px;
+  border: 0px solid transparent;
+  border-width: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 13px;
+  position: static;
+}
+.button > .ld {
+  font-size: initial;
 }
