@@ -6,7 +6,6 @@ import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
 import $ from 'jquery';
 import './app.scss';
-import dotenv from 'dotenv';
 import firebaseConfig from './firebaseConfig';
 // Required for side-effects;
 import * as firebase from 'firebase';
@@ -15,7 +14,7 @@ import 'firebase/auth';
 import 'firebase/storage';
 import UserContext from './UserContext';
 
-dotenv.config();
+// dotenv.config();
 
 export default class App extends React.Component {
   constructor(props) {

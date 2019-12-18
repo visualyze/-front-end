@@ -5,6 +5,7 @@
   opacity: 0.9;
   flex-direction: row-reverse;
 }
+
 ul {
   margin-right: 2%;
 }
@@ -14,6 +15,7 @@ li {
   display: inline-flex;
   color: white;
   align-items: flex-end;
+  padding: 0 1em 0 1em;
 }
 
 .link {
