@@ -1,9 +1,9 @@
 import React from 'react';
-import Highcharts from 'highcharts/js/highcharts';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsMore from 'highcharts/highcharts-more';
-import HeatMap from 'highcharts/modules/heatmap.js';
-import TileMap from 'highcharts/modules/tilemap.js';
+import HeatMap from 'highcharts/modules/heatmap';
+import TileMap from 'highcharts/modules/tilemap';
 import Widget from '../widget.js';
 import $ from 'jquery';
 import '../../dark-unica.scss';

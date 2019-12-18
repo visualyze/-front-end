@@ -1,5 +1,5 @@
 import React from 'react';
-import Highcharts from 'highcharts/js/highcharts';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import Widget from '../widget.js';
 import $ from 'jquery';

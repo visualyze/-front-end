@@ -5,9 +5,9 @@ import Dashboard from './components/dashboard/dashboard.js';
 import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
 import './app.scss';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 
-dotenv.config();
+// dotenv.config();
 
 export default class App extends React.Component {
   constructor(props) {

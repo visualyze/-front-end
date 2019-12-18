@@ -1,8 +1,8 @@
 import React from 'react';
-import Highcharts from 'highcharts/js/highcharts';
+import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import HighchartsMore from 'highcharts/highcharts-more';
-import SolidGauge from 'highcharts/modules/solid-gauge.js';
+import SolidGauge from 'highcharts/modules/solid-gauge';
 import Widget from '../../widget.js';
 import $ from 'jquery';
 import '../../../dark-unica.scss';
