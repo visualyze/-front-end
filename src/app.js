@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import appEvents from './appEvents.js';
 import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
@@ -17,6 +17,8 @@ import UserContext from './UserContext';
 // dotenv.config();
 
 export default class App extends React.Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
 
@@ -53,11 +55,11 @@ export default class App extends React.Component {
     }
 
     console.log('Logging in...');
-    firebase
-      .auth()
-      .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
-      .then(result => this.setState({ user: result.user }))
-      .catch(error => console.log('login failed'));
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword(user.email, user.password)
+    //   .then(result => this.setState({ user: result.user }))
+    //   .catch(error => console.log('login failed'));
   };
 
   saveDashboard = () => {
@@ -172,6 +174,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log(this.context);
     this.makeSureWereLoggedIn();
 
     // This means we have a user and it's the first time we're here

@@ -25,6 +25,7 @@ function onAuthStateChange(callback) {
 function Auth() {
   const [user, setUser] = useState({ loggedIn: false });
   const [error, setError] = useState('');
+  const userCont = useContext(UserContext);
   useEffect(() => {
     const unsubscribe = onAuthStateChange(setUser);
     return () => {
@@ -33,6 +34,9 @@ function Auth() {
   }, []);
 
   const requestLogin = useCallback((email, password) => {
+    userCont.setEmail(email);
+    userCont.setPassword(password);
+    console.log(userCont);
     firebase
       .doSignInWithEmailAndPassword(email, password)
       .catch(error => setError(error.code));
