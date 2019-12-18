@@ -12,6 +12,8 @@ class Widget extends React.Component {
   constructor(props) {
     super(props);
     this.id = nextWidgetId;
+    this.internalTimer = null;
+
     // currently not using, but may eventually
     nextWidgetId += 1;
 
@@ -203,6 +205,10 @@ class Widget extends React.Component {
             </div>
             <div
               onMouseDown={() => {
+                if (this.internalTimer !== null) {
+                  console.log("Clearing interval...")
+                  clearInterval(this.internalTimer);
+                }
                 appEvents.onWidgetDelete(this.props.tile.props.id);
                 this.props.tile.setHover(false);
               }}

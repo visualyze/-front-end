@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app.js';
 import About from './components/about';
-import Login from './components/login';
+import Auth from './components/auth';
 import Home from './components/home';
 import Navbar from './components/navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -17,7 +17,7 @@ export default function Main() {
             <About />
           </Route>
           <Route exact path="/login">
-            <Login />
+            <Auth />
           </Route>
           <Route exact path="/">
             <Home />

@@ -34,14 +34,14 @@ function LoginView({ onClick, error }) {
   const [password, setPassword] = useState('');
   return (
     <div className="logonDiv">
-            
+
       <input
         placeholder="email"
         onChange={event => {
           setUsername(event.target.value);
         }}
       />
-            
+
       <input
         placeholder="password"
         type="password"
@@ -54,10 +54,10 @@ function LoginView({ onClick, error }) {
           onClick(username, password);
         }}
       >
-                login       
+        login
       </a>
-            <span>{error}</span>
-          
+      <span>{error}</span>
+
     </div>
   );
 }
@@ -65,9 +65,9 @@ function LogoutView({ onClick }) {
   const user = useContext(UserContext);
   return (
     <div className="logonDiv">
-            <span>You are logged in as {user.email}</span>
-            <button onClick={onClick}>Logout</button>
-          
+      <span>You are logged in as {user.email}</span>
+      <button onClick={onClick}>Logout</button>
+
     </div>
   );
 }
@@ -96,9 +96,9 @@ function Login() {
   return (
     <div className="loginCard">
       <UserProvider value={user}>
-              
+
         <LogoutView onClick={requestLogout} />
-            
+
       </UserProvider>
     </div>
   );

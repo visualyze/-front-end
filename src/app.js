@@ -6,13 +6,29 @@ import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
 import $ from 'jquery';
 import './app.scss';
+<<<<<<< HEAD
 // import dotenv from 'dotenv';
+=======
+import dotenv from 'dotenv';
+import firebaseConfig from './firebaseConfig';
+// Required for side-effects;
+import * as firebase from 'firebase'
+import 'firebase/firestore';
+import 'firebase/auth';
+import 'firebase/storage';
+>>>>>>> master
 
 // dotenv.config();
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+
+    console.log(firebase.auth().currentUser);
+
+    this.needsSave = false;
+    this.firstLoadWithUser = true;
+
     this.state = {
       // if we change the size of the window, the tiles will also change
       height: window.innerHeight,
@@ -21,8 +37,11 @@ export default class App extends React.Component {
       showingTextInputFor: null,
       showingTextInputField: null,
       showingTextInputTitle: null,
-      widgetConfigs: []
+      widgetConfigs: [],
+      user: null,
     };
+    // console.log(this.state.user);
+    // console.log("Id token: ", this.state.user.getIdToken());
     window.addEventListener('resize', this.handleSizeChange);
     appEvents.onPlusClick = this.handleOnPlusClick;
     appEvents.onUpdateWidgetConfig = this.handleWidgetConfig;
@@ -30,6 +49,50 @@ export default class App extends React.Component {
     appEvents.onWidgetDelete = this.handleWidgetDelete;
     appEvents.onWidgetTextInput = this.handleWidgetTextInput;
     appEvents.onTextInputEntered = this.handleTextInputEntered;
+  }
+
+  makeSureWereLoggedIn = () => {
+    if (this.state.user !== null) {
+      return;
+    }
+
+    console.log("Logging in...");
+    firebase
+      .auth()
+      .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
+      .then((result) => this.setState({ user: result.user }))
+      .catch(error => console.log("login failed"));
+  }
+
+  saveDashboard = () => {
+    // Save can only work if we have a user
+    if (this.state.user === null) {
+      return;
+    }
+
+    const fdb = firebase.database();
+    const dbref = fdb.ref('widgets/' + this.state.user.uid);
+    dbref.set(JSON.stringify(this.state.widgetConfigs), (error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Saved dashboard");
+      }
+    });
+  }
+
+  loadDashboard = () => {
+    // Load can only work if we have a user
+    if (this.state.user === null) {
+      return;
+    }
+
+    const fdb = firebase.database();
+    const dbref = fdb.ref('widgets/' + this.state.user.uid);
+    dbref.on("value", (snapshot) => {
+      const snapshotJson = snapshot.toJSON();
+      this.setState({ widgetConfigs: JSON.parse(snapshotJson) });
+    });
   }
 
   handleOnPlusClick = tile => {
@@ -41,6 +104,8 @@ export default class App extends React.Component {
   };
 
   handleWidgetCreated = (tileId, kind) => {
+    this.needsSave = true;
+
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
@@ -60,6 +125,8 @@ export default class App extends React.Component {
   };
 
   handleWidgetDelete = tileId => {
+    this.needsSave = true;
+
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
 
@@ -70,6 +137,8 @@ export default class App extends React.Component {
   };
 
   handleWidgetTextInput = (tileId, field, title) => {
+    this.needsSave = true;
+
     this.setState({
       showingTextInputFor: tileId,
       showingTextInputField: field,
@@ -82,21 +151,17 @@ export default class App extends React.Component {
   };
 
   handleTextInputEntered = text => {
+    this.needsSave = true;
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
-
-
-
     widgetConfigs[this.state.showingTextInputFor][
       this.state.showingTextInputField
     ] = text;
-
-
-
     this.setState({ showingTextInputFor: null, widgetConfigs });
   };
 
   handleWidgetConfig = widgetConfig => {
+    this.needsSave = true;
     // Duplicate the object because we don't want to change the original one
     const widgetConfigs = Object.assign({}, this.state.widgetConfigs);
     widgetConfigs[widgetConfig.tileId] = widgetConfig;
@@ -111,6 +176,20 @@ export default class App extends React.Component {
   };
 
   render() {
+    this.makeSureWereLoggedIn();
+
+    // This means we have a user and it's the first time we're here
+    if (this.state.user !== null && this.firstLoadWithUser) {
+      this.firstLoadWithUser = false;
+      this.loadDashboard();
+    }
+
+    if (this.needsSave) {
+      this.saveDashboard();
+      this.needsSave = false;
+    }
+
+    console.log("Logged in with: ", this.state.user);
     return (
       <>
         <Dashboard
