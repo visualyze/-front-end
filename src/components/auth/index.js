@@ -27,7 +27,7 @@ function Auth() {
   const [error, setError] = useState('');
   const userCont = useContext(UserContext);
   useEffect(() => {
-    const unsubscribe = onAuthStateChange(setUser);
+    const unsubscribe = onAuthStateChange(setUser); // call setUserContext instead
     return () => {
       // firebase.unsubscribe();
     };

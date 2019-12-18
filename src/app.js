@@ -16,6 +16,8 @@ import UserContext from './UserContext';
 
 // dotenv.config();
 
+const globalUser = 'Can I see this?';
+
 export default class App extends React.Component {
   static contextType = UserContext;
 
