@@ -9,10 +9,11 @@ import './app.scss';
 import dotenv from 'dotenv';
 import firebaseConfig from './firebaseConfig';
 // Required for side-effects;
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
+import UserContext from './UserContext';
 
 dotenv.config();
 
@@ -34,7 +35,7 @@ export default class App extends React.Component {
       showingTextInputField: null,
       showingTextInputTitle: null,
       widgetConfigs: [],
-      user: null,
+      user: null
     };
     // console.log(this.state.user);
     // console.log("Id token: ", this.state.user.getIdToken());
@@ -52,13 +53,13 @@ export default class App extends React.Component {
       return;
     }
 
-    console.log("Logging in...");
+    console.log('Logging in...');
     firebase
       .auth()
       .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
-      .then((result) => this.setState({ user: result.user }))
-      .catch(error => console.log("login failed"));
-  }
+      .then(result => this.setState({ user: result.user }))
+      .catch(error => console.log('login failed'));
+  };
 
   saveDashboard = () => {
     // Save can only work if we have a user
@@ -68,14 +69,14 @@ export default class App extends React.Component {
 
     const fdb = firebase.database();
     const dbref = fdb.ref('widgets/' + this.state.user.uid);
-    dbref.set(JSON.stringify(this.state.widgetConfigs), (error) => {
+    dbref.set(JSON.stringify(this.state.widgetConfigs), error => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Saved dashboard");
+        console.log('Saved dashboard');
       }
     });
-  }
+  };
 
   loadDashboard = () => {
     // Load can only work if we have a user
@@ -85,11 +86,11 @@ export default class App extends React.Component {
 
     const fdb = firebase.database();
     const dbref = fdb.ref('widgets/' + this.state.user.uid);
-    dbref.on("value", (snapshot) => {
+    dbref.on('value', snapshot => {
       const snapshotJson = snapshot.toJSON();
       this.setState({ widgetConfigs: JSON.parse(snapshotJson) });
     });
-  }
+  };
 
   handleOnPlusClick = tile => {
     this.setState({ showingPickerFor: tile.props.id });
@@ -185,7 +186,7 @@ export default class App extends React.Component {
       this.needsSave = false;
     }
 
-    console.log("Logged in with: ", this.state.user);
+    console.log('Logged in with: ', this.state.user);
     return (
       <>
         <Dashboard
