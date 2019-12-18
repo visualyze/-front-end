@@ -116,7 +116,7 @@ class CityWeather extends Widget {
     if (
       config.city !== undefined &&
       config.latlong !== undefined &&
-      date !== null
+      date === null
     ) {
       this.fetchWeatherData(config.latlong);
       date = new Date();
