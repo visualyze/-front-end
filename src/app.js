@@ -6,17 +6,12 @@ import WidgetPicker from './components/widgetPicker/widgetPicker.js';
 import WidgetTextInput from './components/widgetTextInput/widgetTextInput.js';
 import $ from 'jquery';
 import './app.scss';
-<<<<<<< HEAD
-// import dotenv from 'dotenv';
-=======
-import dotenv from 'dotenv';
 import firebaseConfig from './firebaseConfig';
 // Required for side-effects;
 import * as firebase from 'firebase'
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
->>>>>>> master
 
 // dotenv.config();
 
