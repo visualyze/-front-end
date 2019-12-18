@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import firebaseConfig from '../../firebaseConfig';
+import './login.scss';
 firebase.initializeApp(firebaseConfig);
 const defaultUser = { loggedIn: false, email: '' };
 const UserContext = React.createContext({});
@@ -32,28 +33,29 @@ function LoginView({ onClick, error }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   return (
-    <div>
+    <div className="logonDiv">
             
       <input
+        placeholder="email"
         onChange={event => {
           setUsername(event.target.value);
         }}
       />
             
       <input
+        placeholder="password"
         type="password"
         onChange={event => {
           setPassword(event.target.value);
         }}
       />
-            
-      <button
+      <a
         onClick={() => {
           onClick(username, password);
         }}
       >
-                Login       
-      </button>
+                login       
+      </a>
             <span>{error}</span>
           
     </div>
@@ -62,7 +64,7 @@ function LoginView({ onClick, error }) {
 function LogoutView({ onClick }) {
   const user = useContext(UserContext);
   return (
-    <div>
+    <div className="logonDiv">
             <span>You are logged in as {user.email}</span>
             <button onClick={onClick}>Logout</button>
           
@@ -85,14 +87,20 @@ function Login() {
     logout();
   }, []);
   if (!user.loggedIn) {
-    return <LoginView onClick={requestLogin} error={error} />;
+    return (
+      <div className="loginCard">
+        <LoginView onClick={requestLogin} error={error} />;
+      </div>
+    );
   }
   return (
-    <UserProvider value={user}>
-            
-      <LogoutView onClick={requestLogout} />
-          
-    </UserProvider>
+    <div className="loginCard">
+      <UserProvider value={user}>
+              
+        <LogoutView onClick={requestLogout} />
+            
+      </UserProvider>
+    </div>
   );
 }
 
