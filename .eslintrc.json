@@ -6,22 +6,57 @@
     "jest": true,
     "es6": true
   },
+  "extends": [
+    "plugin:jest/recommended",
+    "plugin:react/recommended",
+    "google"
+  ],
   "globals": {
-    "err": true,
-    "req": true,
-    "res": true,
-    "next": true
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
-  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "plugins": [
+    "jest",
+    "react"
+  ],
   "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2017
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "rules": {
-    "no-console": "off",
-    "indent": [ "error", 2 ],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "comma-dangle": ["error", "always-multiline"],
-    "semi": [ "error", "always" ]
+    "no-const-assign": "warn",
+    "no-this-before-super": "warn",
+    "no-undef": "warn",
+    "no-unreachable": "warn",
+    "no-unused-vars": "warn",
+    "no-invalid-this": "warn",
+    "require-jsdoc": "off",
+    "constructor-super": "warn",
+    "valid-typeof": "warn",
+    "arrow-body-style": "off",
+    "class-methods-use-this": "off",
+    "global-require": "off",
+    "linebreak-style": "off",
+    "no-multi-assign": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": false
+      }
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "no-trailing-spaces": "off",
+    "no-underscore-dangle": "off",
+    "no-extra-semi": "error",
+    "strict": "off"
   }
 }

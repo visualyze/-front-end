@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable require-jsdoc */
 import React from 'react';
-import { When } from '../conditionals.js';
+import {When} from '../conditionals.js';
 import appEvents from '../../appEvents.js';
 import appCommon from '../../appCommon.js';
 import './widget.scss';
@@ -11,7 +13,7 @@ class Widget extends React.Component {
     super(props);
     this.id = nextWidgetId;
     // currently not using, but may eventually
-    nextWidgetId++;
+    nextWidgetId += 1;
 
     this.state = {
       isHover: false,
@@ -19,12 +21,12 @@ class Widget extends React.Component {
       resizeSrcX: null,
       resizeSrcY: null,
       resizeDestX: null,
-      resizeDestY: null
+      resizeDestY: null,
     };
   }
 
   setHover(isHover) {
-    this.setState({ isHover });
+    this.setState({isHover});
   }
 
   // this is overridden in each of the children
@@ -32,14 +34,14 @@ class Widget extends React.Component {
     return null;
   }
 
-  handleGripStart = event => {
+  handleGripStart = (event) => {
     document.documentElement.addEventListener(
-      'mouseup',
-      this.handleOnMouseUpAnywhere
+        'mouseup',
+        this.handleOnMouseUpAnywhere,
     );
     document.documentElement.addEventListener(
-      'mousemove',
-      this.handleOnMouseMoveAnywhere
+        'mousemove',
+        this.handleOnMouseMoveAnywhere,
     );
     // we don't want to highlight when we are gripping
     appCommon.pauseEvent(event);
@@ -61,23 +63,23 @@ class Widget extends React.Component {
       resizeSrcX: rect.left,
       resizeSrcY: rect.top,
       resizeDestX: null,
-      resizeDestY: null
+      resizeDestY: null,
     });
   };
 
-  handleOnMouseUpAnywhere = event => {
+  handleOnMouseUpAnywhere = (event) => {
     if (!this.state.isResizing) {
       return;
     }
 
     // We don't need these events any more
     document.documentElement.removeEventListener(
-      'mouseup',
-      this.handleOnMouseUpAnywhere
+        'mouseup',
+        this.handleOnMouseUpAnywhere,
     );
     document.documentElement.removeEventListener(
-      'mousemove',
-      this.handleOnMouseMoveAnywhere
+        'mousemove',
+        this.handleOnMouseMoveAnywhere,
     );
     appCommon.resizeHappening = false;
 
@@ -117,11 +119,11 @@ class Widget extends React.Component {
       resizeSrcX: null,
       resizeSrcY: null,
       resizeDestX: null,
-      resizeDestY: null
+      resizeDestY: null,
     });
   };
 
-  handleOnMouseMoveAnywhere = event => {
+  handleOnMouseMoveAnywhere = (event) => {
     if (!this.state.isResizing) {
       return;
     }
@@ -145,43 +147,43 @@ class Widget extends React.Component {
 
     this.setState({
       resizeDestX: event.clientX,
-      resizeDestY: event.clientY
+      resizeDestY: event.clientY,
     });
   };
 
   // There are 2 margins between tile (the right and left of each tile)
   // TILE margin margin TILE margin margin TILE margin margin TILE
   calcSize = (numOfTiles, resizeSize) => {
-    const { tileSize, config } = this.props;
-    return resizeSize
-      ? resizeSize
-      : numOfTiles * tileSize + (numOfTiles - 1) * (appCommon.tileMargin * 2);
+    const {tileSize, config} = this.props;
+    return resizeSize ?
+      resizeSize :
+      numOfTiles * tileSize + (numOfTiles - 1) * (appCommon.tileMargin * 2);
   };
 
   // This is representing the actual width in pixels of the widget that we
   // need to draw. This is used also while dragging and in all the child widgets.
   getTileWidth = () => {
-    const { tileSize, config } = this.props;
+    const {tileSize, config} = this.props;
     const resizedWidth =
-      this.state.resizeSrcX !== null
-        ? this.state.resizeDestX - this.state.resizeSrcX
-        : null;
+      this.state.resizeSrcX !== null ?
+        this.state.resizeDestX - this.state.resizeSrcX :
+        null;
     return this.calcSize(config.numOfTilesW, resizedWidth);
   };
 
   // This is representing the actual height in pixels of the widget that we
   // need to draw. This is used also while dragging and in all the child widgets.
   getTileHeight = () => {
-    const { tileSize, config } = this.props;
+    const {tileSize, config} = this.props;
     const resizedHeight =
-      this.state.resizeSrcX !== null
-        ? this.state.resizeDestY - this.state.resizeSrcY
-        : null;
+      this.state.resizeSrcX !== null ?
+        this.state.resizeDestY - this.state.resizeSrcY :
+        null;
     return this.calcSize(config.numOfTilesH, resizedHeight);
   };
 
   render() {
-    const { tileSize, config } = this.props;
+    const {tileSize, config} = this.props;
 
     return (
       <>
@@ -190,7 +192,7 @@ class Widget extends React.Component {
           onMouseLeave={() => this.setHover(false)}
           style={{
             width: this.getTileWidth(),
-            height: this.getTileHeight()
+            height: this.getTileHeight(),
           }}
           className="widget"
         >
