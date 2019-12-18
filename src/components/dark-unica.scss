@@ -1,5 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Unica+One';
-.highcharts-title, .highcharts-subtitle {
+
+.highcharts-title,
+.highcharts-subtitle {
   text-transform: uppercase;
 }
 
@@ -15,7 +17,8 @@
   stroke-width: 1px;
 }
 
-.highcharts-axis-labels, .highcharts-axis-title {
+.highcharts-axis-labels,
+.highcharts-axis-title {
   fill: #E0E0E3;
 }
 
@@ -72,7 +75,7 @@
   /* #1072 */
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   font-family: "Unica One", Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 1vw;
 }
 
 .highcharts-root {
@@ -99,7 +102,8 @@
   fill: #2a2a2b;
 }
 
-.highcharts-plot-border, .highcharts-plot-background {
+.highcharts-plot-border,
+.highcharts-plot-background {
   fill: none;
 }
 
@@ -366,7 +370,8 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-data-label text, text.highcharts-data-label {
+.highcharts-data-label text,
+text.highcharts-data-label {
   fill: #B0B0B3;
 }
 
@@ -491,7 +496,7 @@ g.highcharts-series,
   stroke-width: 0;
 }
 
-.highcharts-legend-item > text {
+.highcharts-legend-item>text {
   fill: #E0E0E3;
   font-weight: bold;
   font-size: 1em;
@@ -518,7 +523,8 @@ g.highcharts-series,
   fill: #606063;
 }
 
-circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
+circle.highcharts-legend-nav-active,
+circle.highcharts-legend-nav-inactive {
   /* tracker */
   fill: rgba(192, 192, 192, 0.0001);
 }
@@ -566,7 +572,8 @@ circle.highcharts-legend-nav-active, circle.highcharts-legend-nav-inactive {
 }
 
 /* Plot bands and polar pane backgrounds */
-.highcharts-plot-band, .highcharts-pane {
+.highcharts-plot-band,
+.highcharts-pane {
   fill: #fff;
   fill-opacity: 0.05;
 }
@@ -970,7 +977,8 @@ text.highcharts-drilldown-data-label,
 }
 
 /* Gantt */
-.highcharts-treegrid-node-collapsed, .highcharts-treegrid-node-expanded {
+.highcharts-treegrid-node-collapsed,
+.highcharts-treegrid-node-expanded {
   cursor: pointer;
 }
 
