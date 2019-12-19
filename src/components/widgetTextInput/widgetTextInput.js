@@ -18,14 +18,21 @@ class WidgetPicker extends React.Component {
     }
   };
 
-
   render() {
     return (
       <>
         <div className="WidgetTextInput">
           <div className="WidgetInputTextHeader">{this.props.title}</div>
           <div className="WidgetInputTextBox">
-            <input type="text" onKeyDown={this.handleKeyDown} />
+            <input
+              type="text"
+              ref={el => {
+                if (el) {
+                  el.focus();
+                }
+              }}
+              onKeyDown={this.handleKeyDown}
+            />
           </div>
         </div>
       </>

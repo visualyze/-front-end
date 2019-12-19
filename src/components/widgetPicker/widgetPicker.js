@@ -19,7 +19,7 @@ class WidgetPicker extends React.Component {
             className="WidgetPickerOption"
             onClick={() => appEvents.onWidgetCreated(this.props.tile, 'clock')}
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <img className="WidgetPickerImage" src="/images/clockIcon.png" />
             <div className="WidgetPickerName">Clock</div>
           </div>
           <div
@@ -28,7 +28,7 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'hourlyEarthquakes')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <img className="WidgetPickerImage" src="/images/lineChart.png" />
             <div className="WidgetPickerName">Hourly Earthquakes</div>
           </div>
           <div
@@ -37,8 +37,11 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'strongestEarthquake')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Strongest Magnitude</div>
+            <img className="WidgetPickerImage" src="/images/gaugeIcon.png" />
+            <div className="WidgetPickerName">
+              Earthquake Strongest Magnitude <br />
+              (Last 24h)
+            </div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -46,8 +49,12 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'depthCorrelation')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Depth Correlation</div>
+            <img className="WidgetPickerImage" src="/images/scatterIcon.png" />
+            <div className="WidgetPickerName">
+              Eathquake Depth Correlation
+              <br />
+              (Last 24h)
+            </div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -58,8 +65,12 @@ class WidgetPicker extends React.Component {
               )
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Strongest Magnitude (1 week)</div>
+            <img className="WidgetPickerImage" src="/images/gaugeIcon.png" />
+            <div className="WidgetPickerName">
+              Earthquake Strongest Magnitude
+              <br />
+              (1 week)
+            </div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -67,8 +78,12 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'depthCorrelationWeek')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Depth Correlation (1 week)</div>
+            <img className="WidgetPickerImage" src="/images/scatterIcon.png" />
+            <div className="WidgetPickerName">
+              Earthquake Depth Correlation
+              <br />
+              (1 week)
+            </div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -79,9 +94,11 @@ class WidgetPicker extends React.Component {
               )
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <img className="WidgetPickerImage" src="/images/gaugeIcon.png" />
             <div className="WidgetPickerName">
-              Strongest Magnitude (1 month)
+              Earthquake Strongest Magnitude
+              <br />
+              (1 month)
             </div>
           </div>
           <div
@@ -93,8 +110,12 @@ class WidgetPicker extends React.Component {
               )
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Depth Correlation (1 month)</div>
+            <img className="WidgetPickerImage" src="/images/scatterIcon.png" />
+            <div className="WidgetPickerName">
+              Earthquake Depth Correlation
+              <br />
+              (1 month)
+            </div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -102,7 +123,10 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'usPopulation')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <img
+              className="WidgetPickerImage"
+              src="/images/populationIcon.png"
+            />
             <div className="WidgetPickerName">US Population</div>
           </div>
           <div
@@ -111,8 +135,11 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'cityWeather')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
-            <div className="WidgetPickerName">Weather</div>
+            <img
+              className="WidgetPickerImage"
+              src="/images/lineChartDoubleLine.png"
+            />
+            <div className="WidgetPickerName">Weather by City</div>
           </div>
           <div
             className="WidgetPickerOption"
@@ -120,7 +147,7 @@ class WidgetPicker extends React.Component {
               appEvents.onWidgetCreated(this.props.tile, 'volcanoesByRegion')
             }
           >
-            <img className="WidgetPickerImage" src="/images/plus.png" />
+            <img className="WidgetPickerImage" src="/images/pieIcon.png" />
             <div className="WidgetPickerName">Volcanoes by Region</div>
           </div>
         </div>

@@ -20,8 +20,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(firebase.auth().currentUser);
-
     this.needsSave = false;
     this.firstLoadWithUser = true;
 
@@ -52,12 +50,12 @@ export default class App extends React.Component {
       return;
     }
 
-    console.log('Logging in...');
-    firebase
-      .auth()
-      .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
-      .then(result => this.setState({ user: result.user }))
-      .catch(error => console.log('login failed'));
+    this.state.user = firebase.auth().currentUser;
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
+    //   .then(result => this.setState({ user: result.user }))
+    //   .catch(error => console.log('login failed'));
   };
 
   saveDashboard = () => {
@@ -116,7 +114,7 @@ export default class App extends React.Component {
     this.setState({ widgetConfigs, showingPickerFor: null });
 
     if (kind === 'cityWeather') {
-      appEvents.onWidgetTextInput(tileId, 'city', 'Location');
+      appEvents.onWidgetTextInput(tileId, 'city', 'Enter a City');
     }
   };
 
@@ -153,6 +151,12 @@ export default class App extends React.Component {
     widgetConfigs[this.state.showingTextInputFor][
       this.state.showingTextInputField
     ] = text;
+
+    // whenever we change a city, latlong should be undefined so it would refresh
+    if (this.state.showingTextInputField === 'city') {
+      widgetConfigs[this.state.showingTextInputFor].latlong = undefined;
+    }
+
     this.setState({ showingTextInputFor: null, widgetConfigs });
   };
 
@@ -173,6 +177,10 @@ export default class App extends React.Component {
 
   render() {
     this.makeSureWereLoggedIn();
+
+    if (this.state.user === null) {
+      return <div>Need to login to use dashboard</div>;
+    }
 
     // This means we have a user and it's the first time we're here
     if (this.state.user !== null && this.firstLoadWithUser) {

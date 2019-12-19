@@ -14,9 +14,9 @@ class CityWeather extends Widget {
     super(props);
     this.state.date = new Date();
     this.state.geoData = [];
-    this.state.tempHighWeather = [];
-    this.state.tempLowWeather = [];
-    this.state.timeWeather = [];
+    this.state.tempHighWeather = null;
+    this.state.tempLowWeather = null;
+    this.state.timeWeather = null;
   }
 
   handleNewSecond = () => {
@@ -69,7 +69,7 @@ class CityWeather extends Widget {
         styledMode: true
       },
       title: {
-        text: 'Daily Temperature',
+        text: `Daily Temperature: ${this.props.config.city}`,
         style: { fontColor: 'white' }
       },
       xAxis: {
@@ -107,7 +107,6 @@ class CityWeather extends Widget {
   renderWidget() {
     const { config } = this.props;
     const options = this.getOptions();
-    let date = null;
 
     if (config.city !== undefined && config.latlong === undefined) {
       this.fetchGeoData(config.city);
@@ -116,10 +115,11 @@ class CityWeather extends Widget {
     if (
       config.city !== undefined &&
       config.latlong !== undefined &&
-      date === null
+      this.state.tempHighWeather === null
     ) {
+      console.log('weather data');
       this.fetchWeatherData(config.latlong);
-      date = new Date();
+      return <div>Fetching weather data for {config.city}</div>;
     }
 
     return (
@@ -130,7 +130,7 @@ class CityWeather extends Widget {
               appEvents.onWidgetTextInput(
                 this.props.tile.props.id,
                 'city',
-                'Location'
+                'Enter a City'
               );
             }}
             className="WidgetSettings"
