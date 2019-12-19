@@ -9,7 +9,7 @@ import $ from 'jquery';
 import '../../../dark-unica.scss';
 import './strongestEarthquakeWidget.scss';
 
-const url = `http://localhost:3333/api/strongestEarthquake`;
+const url = `${process.env.REACT_APP_API_URL}api/strongestEarthquake`;
 console.log(url);
 
 // eslint-disable-next-line new-cap
@@ -31,7 +31,7 @@ class StrongestEarthquakeWidget extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: `${process.env.DEPLOYEDURL}api/strongestEarthquake`,
+      url: `${process.env.REACT_APP_API_URL}api/strongestEarthquake`,
     }).done((result) => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,

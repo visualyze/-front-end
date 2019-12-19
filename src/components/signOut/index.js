@@ -1,15 +1,15 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import UserContext from '../../UserContext';
+import { AppContext } from '../../appContext';
 
-function Logout({ onClick }) {
-  const user = useContext(UserContext);
+function SignOut({ onClick }) {
+  const [state, setState] = useContext(AppContext);
   //   const user = {};
   return (
     <div className="logonDiv">
-            <span>You are logged in as {user.email}</span>
+            <span>You are logged in as {state.user.email}</span>
             <button onClick={onClick}>Logout</button>
     </div>
   );
 }
 
-export default Logout;
+export default SignOut;

@@ -7,7 +7,7 @@ import $ from 'jquery';
 import '../../dark-unica.scss';
 import './volcanoesByRegionWidget.scss';
 
-const url = `http://localhost:3333/api/volcanoesByRegion`;
+const url = `${process.env.REACT_APP_API_URL}api/volcanoesByRegion`;
 console.log(url);
 
 // eslint-disable-next-line new-cap
@@ -23,7 +23,7 @@ class VolcanoesByRegion extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: 'http://localhost:3333/api/volcanoesByRegion',
+      url: `${process.env.REACT_APP_API_URL}api/volcanoesByRegion`,
     }).done((result) => {
       this.setState({
         data: Object.entries(result).map((pair) => {
