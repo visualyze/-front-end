@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
         <TileGrid
           width={width}
           height={height}
-          tilesPerRow={5}
+          tilesPerRow={6}
           rows={3}
           widgetConfigs={widgetConfigs}
         />

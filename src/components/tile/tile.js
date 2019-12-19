@@ -13,6 +13,7 @@ import DepthCorrelationMonthWidget from '../widgets/depthCorrelation/depthCorrel
 import UsPopulationWidget from '../widgets/usPopulation/usPopulationWidget.js';
 import CityWeatherWidget from '../widgets/weather/cityWeatherWidget.js';
 import VolcanoesByRegionWidget from '../widgets/volcanoes/volcanoesByRegionWidget.js';
+import BreakingNewsRssFeedWidget from '../widgets/rssFeed/breakingNewsRssFeedWidget.js';
 
 import './tile.scss';
 
