@@ -81,7 +81,8 @@ export default class App extends React.Component {
     const dbref = fdb.ref('widgets/' + this.state.user.uid);
     dbref.on('value', snapshot => {
       const snapshotJson = snapshot.toJSON();
-      this.setState({ widgetConfigs: JSON.parse(snapshotJson) });
+      const parsedJson = JSON.parse(snapshotJson);
+      this.setState({ widgetConfigs: parsedJson ? parsedJson : {} });
     });
   };
 
