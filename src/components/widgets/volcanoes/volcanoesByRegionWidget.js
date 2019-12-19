@@ -23,13 +23,13 @@ class VolcanoesByRegion extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: `${process.env.REACT_APP_API_URL}api/volcanoesByRegion`,
-    }).done((result) => {
+      url: `${process.env.REACT_APP_API_URL}api/volcanoesByRegion`
+    }).done(result => {
       this.setState({
-        data: Object.entries(result).map((pair) => {
-          return {name: pair[0], y: pair[1]};
+        data: Object.entries(result).map(pair => {
+          return { name: pair[0], y: pair[1] };
         }),
-        isLoading: false,
+        isLoading: false
       });
     });
   };
@@ -43,18 +43,18 @@ class VolcanoesByRegion extends Widget {
         type: 'pie',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
       title: {
-        text: 'Volcanoes by Region',
+        text: 'VOLCANOES BY REGION'
       },
       tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>',
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
       },
       accessibility: {
         point: {
-          valueSuffix: '%',
-        },
+          valueSuffix: '%'
+        }
       },
       plotOptions: {
         pie: {
@@ -62,25 +62,25 @@ class VolcanoesByRegion extends Widget {
           cursor: 'pointer',
           dataLabels: {
             enabled: true,
-            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-          },
-        },
+            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+          }
+        }
       },
       series: [
         {
           name: 'Volcanoes',
           colorByPoint: true,
-          data: this.state.data,
-        },
+          data: this.state.data
+        }
       ],
 
       credits: {
-        enabled: false,
+        enabled: false
       },
 
       legend: {
-        enabled: false,
-      },
+        enabled: false
+      }
     };
   };
 

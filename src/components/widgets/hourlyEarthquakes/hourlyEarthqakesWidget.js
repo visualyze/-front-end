@@ -38,7 +38,7 @@ class HourlyEarthqakesWidget extends Widget {
       },
 
       title: {
-        text: 'Hourly Earthquakes (24h)'
+        text: 'HOURLY EARTHQUAKES (24h)'
       },
 
       yAxis: {

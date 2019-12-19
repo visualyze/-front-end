@@ -1,17 +1,23 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../appContext';
+import './signout.scss';
 
 function SignOut({ onClick }) {
   const [state, setState] = useContext(AppContext);
   //   const user = {};
   return (
     <div className="logonDiv">
-            <span>You are logged in as {state.user.email}</span>
-      <button class="logoutScreenButtons">
-        <a href="/dashboard">Go to Dashboard</a>
+            
+      <span className="logoutSpan">
+        You are logged in as {state.user.email}
+      </span>
+      <button className="logoutScreenButtons">
+        <a className="buttonA" href="/dashboard">
+          Go to Dashboard
+        </a>
       </button>
             
-      <button class="logoutScreenButtons" onClick={onClick}>
+      <button className="logoutScreenButtons" onClick={onClick}>
         Logout
       </button>
     </div>

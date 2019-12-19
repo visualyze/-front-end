@@ -28,12 +28,12 @@ class StrongestEarthquakeMonthWidget extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: `${process.env.REACT_APP_API_URL}api/strongestEarthquakeMonth`,
-    }).done((result) => {
+      url: `${process.env.REACT_APP_API_URL}api/strongestEarthquakeMonth`
+    }).done(result => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,
         strongestLocation: result.strongestLocation,
-        isLoading: false,
+        isLoading: false
       });
     });
   };
@@ -44,15 +44,15 @@ class StrongestEarthquakeMonthWidget extends Widget {
         type: 'solidgauge',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
 
       title: {
-        text: this.state.strongestLocation,
+        text: this.state.strongestLocation
       },
 
       subtitle: {
-        text: '1 Month',
+        text: 'STRONGEST EARTHQUAKE 1 MONTH'
       },
 
       pane: {
@@ -63,8 +63,8 @@ class StrongestEarthquakeMonthWidget extends Widget {
         background: {
           innerRadius: '60%',
           outerRadius: '100%',
-          shape: 'arc',
-        },
+          shape: 'arc'
+        }
       },
 
       // the value axis
@@ -72,7 +72,7 @@ class StrongestEarthquakeMonthWidget extends Widget {
         stops: [
           [0.1, '#55BF3B'], // green
           [0.5, '#DDDF0D'], // yellow
-          [0.9, '#DF5353'], // red
+          [0.9, '#DF5353'] // red
         ],
         lineWidth: 0,
         tickWidth: 0,
@@ -80,17 +80,17 @@ class StrongestEarthquakeMonthWidget extends Widget {
         tickAmount: 2,
         title: {
           y: -70,
-          text: null,
+          text: null
         },
         labels: {
-          y: 16,
+          y: 16
         },
         min: 0,
-        max: 10,
+        max: 10
       },
 
       credits: {
-        enabled: false,
+        enabled: false
       },
 
       plotOptions: {
@@ -98,21 +98,21 @@ class StrongestEarthquakeMonthWidget extends Widget {
           dataLabels: {
             y: 5,
             borderWidth: 0,
-            useHTML: true,
-          },
-        },
+            useHTML: true
+          }
+        }
       },
 
       legend: {
-        enabled: false,
+        enabled: false
       },
 
       series: [
         {
           name: 'magnitude',
-          data: [this.state.strongestEarthquake],
-        },
-      ],
+          data: [this.state.strongestEarthquake]
+        }
+      ]
     };
   };
 

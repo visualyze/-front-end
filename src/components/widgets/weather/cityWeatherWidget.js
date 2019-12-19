@@ -3,7 +3,7 @@ import Widget from '../widget.js';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 // import HighchartsMore from 'highcharts/highcharts-more';
-import {When} from '../../conditionals.js';
+import { When } from '../../conditionals.js';
 import appEvents from '../../../appEvents.js';
 import $ from 'jquery';
 import '../../dark-unica.scss';
@@ -20,18 +20,18 @@ class CityWeather extends Widget {
   }
 
   handleNewSecond = () => {
-    this.setState({date: new Date()});
+    this.setState({ date: new Date() });
   };
 
   fetchWeatherData(latlong) {
     $.ajax({
-      url: `${process.env.REACT_APP_API_URL}api/fetchWeatherHighLow?lat=${latlong[0]}&long=${latlong[1]}`,
-    }).done((result) => {
+      url: `${process.env.REACT_APP_API_URL}api/fetchWeatherHighLow?lat=${latlong[0]}&long=${latlong[1]}`
+    }).done(result => {
       const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const tempHigh = [];
       const tempLow = [];
       const time = [];
-      result.forEach((day) => {
+      result.forEach(day => {
         tempHigh.push(day.temperatureHigh);
         tempLow.push(day.temperatureLow);
         const date = new Date();
@@ -47,15 +47,15 @@ class CityWeather extends Widget {
         tempHighWeather: tempHigh,
         tempLowWeather: tempLow,
         timeWeather: time,
-        isLoading: false,
+        isLoading: false
       });
     });
   }
 
   fetchGeoData(city) {
     $.ajax({
-      url: `${process.env.REACT_APP_API_URL}api/fetchLatLong?city=${city}`,
-    }).done((result) => {
+      url: `${process.env.REACT_APP_API_URL}api/fetchLatLong?city=${city}`
+    }).done(result => {
       console.log('This is the result of fetch geo data', result);
       const newConfig = Object.assign({}, this.props.config);
       newConfig.latlong = result;
@@ -71,46 +71,46 @@ class CityWeather extends Widget {
         type: 'line',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
       title: {
-        text: `Daily Temperature: ${this.props.config.city}`,
-        style: {fontColor: 'white'},
+        text: `DAILY TEMPERATURE: ${this.props.config.city}`,
+        style: { fontColor: 'white' }
       },
       xAxis: {
-        categories: this.state.timeWeather,
+        categories: this.state.timeWeather
       },
       yAxis: {
         title: {
-          text: 'Temperature (°F)',
-        },
+          text: 'Temperature (°F)'
+        }
       },
       plotOptions: {
         line: {
           dataLabels: {
-            enabled: true,
+            enabled: true
           },
-          enableMouseTracking: false,
-        },
+          enableMouseTracking: false
+        }
       },
       series: [
         {
           name: 'High',
-          data: this.state.tempHighWeather,
+          data: this.state.tempHighWeather
         },
         {
           name: 'Low',
-          data: this.state.tempLowWeather,
-        },
+          data: this.state.tempLowWeather
+        }
       ],
       credits: {
-        enabled: false,
-      },
+        enabled: false
+      }
     };
   };
 
   renderWidget() {
-    const {config} = this.props;
+    const { config } = this.props;
     const options = this.getOptions();
 
     if (config.city !== undefined && config.latlong === undefined) {
@@ -133,9 +133,9 @@ class CityWeather extends Widget {
           <div
             onMouseDown={() => {
               appEvents.onWidgetTextInput(
-                  this.props.tile.props.id,
-                  'city',
-                  'Enter a City',
+                this.props.tile.props.id,
+                'city',
+                'Enter a City'
               );
             }}
             className="WidgetSettings"
