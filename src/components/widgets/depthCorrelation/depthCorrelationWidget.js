@@ -17,11 +17,11 @@ class DepthCorrelation extends Widget {
   }
 
   handleRefresh = () => {
-    //TODO: make this configurable
+    // TODO: make this configurable
     $.ajax({
-      url: `http://localhost:3333/api/depthCorrelation`
-    }).done(result => {
-      this.setState({ series: result.series, isLoading: false });
+      url: `${process.env.REACT_APP_API_URL}api/depthCorrelation`,
+    }).done((result) => {
+      this.setState({series: result.series, isLoading: false});
     });
   };
 
@@ -32,55 +32,55 @@ class DepthCorrelation extends Widget {
         width: this.getTileWidth(),
         height: this.getTileHeight(),
         styledMode: true,
-        zoomType: 'xy'
+        zoomType: 'xy',
       },
 
       title: {
-        text: 'Depth Correlation'
+        text: 'Depth Correlation',
       },
 
       subtitle: {
-        text: 'Last 24 Hours'
+        text: 'Last 24 Hours',
       },
 
       yAxis: {
         title: {
-          text: 'Depth (km)'
-        }
+          text: 'Depth (km)',
+        },
       },
 
       xAxis: {
         title: {
           enabled: true,
-          text: 'Magnitude'
+          text: 'Magnitude',
         },
         startOnTick: true,
         endOnTick: true,
-        showLastLabel: true
+        showLastLabel: true,
       },
 
       legend: {
-        enabled: false
+        enabled: false,
       },
 
       plotOptions: {
         scatter: {
           marker: {
-            radius: 2.5
-          }
-        }
+            radius: 2.5,
+          },
+        },
       },
 
       credits: {
-        enabled: false
+        enabled: false,
       },
 
       series: [
         {
           name: 'Earthquake',
-          data: this.state.series
-        }
-      ]
+          data: this.state.series,
+        },
+      ],
     };
   };
 

@@ -14,8 +14,6 @@ import 'firebase/auth';
 import 'firebase/storage';
 import { AppContext } from './appContext';
 
-// dotenv.config();
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);

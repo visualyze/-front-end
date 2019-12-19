@@ -28,7 +28,7 @@ class StrongestEarthquakeMonthWidget extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: 'http://localhost:3333/api/strongestEarthquakeMonth',
+      url: `${process.env.REACT_APP_API_URL}api/strongestEarthquakeMonth`,
     }).done((result) => {
       this.setState({
         strongestEarthquake: result.strongestEarthquake,
