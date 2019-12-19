@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import appEvents from './appEvents.js';
 import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
@@ -8,14 +8,19 @@ import $ from 'jquery';
 import './app.scss';
 import firebaseConfig from './firebaseConfig';
 // Required for side-effects;
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
+import UserContext from './UserContext';
 
 // dotenv.config();
 
+const globalUser = 'Can I see this?';
+
 export default class App extends React.Component {
+  static contextType = UserContext;
+
   constructor(props) {
     super(props);
 
@@ -33,7 +38,7 @@ export default class App extends React.Component {
       showingTextInputField: null,
       showingTextInputTitle: null,
       widgetConfigs: [],
-      user: null,
+      user: null
     };
     // console.log(this.state.user);
     // console.log("Id token: ", this.state.user.getIdToken());
@@ -51,13 +56,13 @@ export default class App extends React.Component {
       return;
     }
 
-    console.log("Logging in...");
-    firebase
-      .auth()
-      .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
-      .then((result) => this.setState({ user: result.user }))
-      .catch(error => console.log("login failed"));
-  }
+    console.log('Logging in...');
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword(user.email, user.password)
+    //   .then(result => this.setState({ user: result.user }))
+    //   .catch(error => console.log('login failed'));
+  };
 
   saveDashboard = () => {
     // Save can only work if we have a user
@@ -67,14 +72,14 @@ export default class App extends React.Component {
 
     const fdb = firebase.database();
     const dbref = fdb.ref('widgets/' + this.state.user.uid);
-    dbref.set(JSON.stringify(this.state.widgetConfigs), (error) => {
+    dbref.set(JSON.stringify(this.state.widgetConfigs), error => {
       if (error) {
         console.log(error);
       } else {
-        console.log("Saved dashboard");
+        console.log('Saved dashboard');
       }
     });
-  }
+  };
 
   loadDashboard = () => {
     // Load can only work if we have a user
@@ -84,11 +89,11 @@ export default class App extends React.Component {
 
     const fdb = firebase.database();
     const dbref = fdb.ref('widgets/' + this.state.user.uid);
-    dbref.on("value", (snapshot) => {
+    dbref.on('value', snapshot => {
       const snapshotJson = snapshot.toJSON();
       this.setState({ widgetConfigs: JSON.parse(snapshotJson) });
     });
-  }
+  };
 
   handleOnPlusClick = tile => {
     this.setState({ showingPickerFor: tile.props.id });
@@ -171,6 +176,7 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log(this.context);
     this.makeSureWereLoggedIn();
 
     // This means we have a user and it's the first time we're here
@@ -184,7 +190,7 @@ export default class App extends React.Component {
       this.needsSave = false;
     }
 
-    console.log("Logged in with: ", this.state.user);
+    console.log('Logged in with: ', this.state.user);
     return (
       <>
         <Dashboard
