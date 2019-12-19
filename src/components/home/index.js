@@ -7,8 +7,10 @@ const Home = () => {
       <div className="backgroundContainer" />
       <img id="logoimg" src="/images/visualyze-logo.png" />
       <p id="tagline">all your weather, in one place</p>
-      <div class="button" path="/login">
-        sign up today
+      <div class="button">
+        <a class="buttonATag" href="/login">
+          sign up today
+        </a>
       </div>
     </>
   );
