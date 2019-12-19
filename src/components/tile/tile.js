@@ -13,7 +13,7 @@ import DepthCorrelationMonthWidget from '../widgets/depthCorrelation/depthCorrel
 import UsPopulationWidget from '../widgets/usPopulation/usPopulationWidget.js';
 import CityWeatherWidget from '../widgets/weather/cityWeatherWidget.js';
 import VolcanoesByRegionWidget from '../widgets/volcanoes/volcanoesByRegionWidget.js';
-import BreakingNewsRssFeedWidget from '../widgets/rssFeed/breakingNewsRssFeedWidget.js';
+import CarbonEmissionsWidget from '../widgets/carbonEmissions/carbonEmissionsWidget.js';
 
 import './tile.scss';
 
@@ -101,6 +101,13 @@ class Tile extends React.Component {
       ),
       volcanoesByRegion: () => (
         <VolcanoesByRegionWidget
+          config={widgetConfig}
+          tileSize={size}
+          tile={this}
+        />
+      ),
+      carbonEmissions: () => (
+        <CarbonEmissionsWidget
           config={widgetConfig}
           tileSize={size}
           tile={this}
