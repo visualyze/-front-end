@@ -19,11 +19,12 @@ class HourlyEarthqakesWidget extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: `${process.env.REACT_APP_API_URL}api/hourlyEarthquakes`,
-    }).done((result) => {
+      url: `${process.env.REACT_APP_API_URL}api/hourlyEarthquakes`
+    }).done(result => {
+      console.log('this is my result', result);
       // We map [["123456": 1]] to [[123456: 1]]
-      const series = result.map((pair) => [Number.parseInt(pair[0]), pair[1]]);
-      this.setState({series: series, isLoading: false});
+      const series = result.map(pair => [Number.parseInt(pair[0]), pair[1]]);
+      this.setState({ series: series, isLoading: false });
     });
   };
 
@@ -33,50 +34,50 @@ class HourlyEarthqakesWidget extends Widget {
         type: 'line',
         width: this.getTileWidth(),
         height: this.getTileHeight(),
-        styledMode: true,
+        styledMode: true
       },
 
       title: {
-        text: 'Hourly Earthquakes (24h)',
+        text: 'Hourly Earthquakes (24h)'
       },
 
       yAxis: {
         title: {
-          enabled: false,
-        },
+          enabled: false
+        }
       },
 
       xAxis: {
         type: 'datetime',
         dateTimeLabelFormats: {
-          hour: '%I %p',
+          hour: '%I %p'
         },
         labels: {
           format: '{value:%I %p}',
-          style: {fontSize: '8px'},
+          style: { fontSize: '8px' }
         },
 
-        tickInterval: 1000 * 60 * 60, // tick every hour
+        tickInterval: 1000 * 60 * 60 // tick every hour
       },
 
       legend: {
-        enabled: false,
+        enabled: false
       },
 
       plotOptions: {
-        series: {},
+        series: {}
       },
 
       credits: {
-        enabled: false,
+        enabled: false
       },
 
       series: [
         {
           name: 'count',
-          data: this.state.series,
-        },
-      ],
+          data: this.state.series
+        }
+      ]
     };
   };
 
