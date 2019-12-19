@@ -12,19 +12,13 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
-import UserContext from './UserContext';
+import { AppContext } from './appContext';
 
 // dotenv.config();
 
-const globalUser = 'Can I see this?';
-
 export default class App extends React.Component {
-  static contextType = UserContext;
-
   constructor(props) {
     super(props);
-
-    console.log(firebase.auth().currentUser);
 
     this.needsSave = false;
     this.firstLoadWithUser = true;
@@ -56,12 +50,10 @@ export default class App extends React.Component {
       return;
     }
 
-    console.log('Logging in...');
-    // firebase
-    //   .auth()
-    //   .signInWithEmailAndPassword(user.email, user.password)
-    //   .then(result => this.setState({ user: result.user }))
-    //   .catch(error => console.log('login failed'));
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+      this.setState({ user: firebase.auth().currentUser });
+    }
   };
 
   saveDashboard = () => {
@@ -120,7 +112,7 @@ export default class App extends React.Component {
     this.setState({ widgetConfigs, showingPickerFor: null });
 
     if (kind === 'cityWeather') {
-      appEvents.onWidgetTextInput(tileId, 'city', 'Location');
+      appEvents.onWidgetTextInput(tileId, 'city', 'Enter a City');
     }
   };
 
@@ -157,6 +149,12 @@ export default class App extends React.Component {
     widgetConfigs[this.state.showingTextInputFor][
       this.state.showingTextInputField
     ] = text;
+
+    // whenever we change a city, latlong should be undefined so it would refresh
+    if (this.state.showingTextInputField === 'city') {
+      widgetConfigs[this.state.showingTextInputFor].latlong = undefined;
+    }
+
     this.setState({ showingTextInputFor: null, widgetConfigs });
   };
 

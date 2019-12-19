@@ -2,3 +2,9 @@
   font-size: 16px;
   text-transform: none;
 }
+
+.UsPopulation .highcharts-data-label-color-undefined text {
+  color: black;
+  stroke: black;
+  fill: black;
+}

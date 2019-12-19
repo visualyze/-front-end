@@ -23,7 +23,6 @@ class HourlyEarthqakesWidget extends Widget {
     }).done(result => {
       // We map [["123456": 1]] to [[123456: 1]]
       const series = result.map(pair => [Number.parseInt(pair[0]), pair[1]]);
-      console.log(series);
       this.setState({ series: series, isLoading: false });
     });
   };

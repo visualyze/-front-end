@@ -1,5 +1,5 @@
 .WidgetTextInput {
-  width: 50%;
+  width: 30%;
   top: 50%;
   left: 50%;
   border-radius: 20px;
@@ -14,7 +14,11 @@
   z-index: 11;
 }
 
+.WidgetInputTextBox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .WidgetTextInputHeader {
   font-size: 20px;
-  margin-bottom: 20px;
 }
