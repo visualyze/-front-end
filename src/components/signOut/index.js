@@ -7,7 +7,13 @@ function SignOut({ onClick }) {
   return (
     <div className="logonDiv">
             <span>You are logged in as {state.user.email}</span>
-            <button onClick={onClick}>Logout</button>
+      <button class="logoutScreenButtons">
+        <a href="/dashboard">Go to Dashboard</a>
+      </button>
+            
+      <button class="logoutScreenButtons" onClick={onClick}>
+        Logout
+      </button>
     </div>
   );
 }

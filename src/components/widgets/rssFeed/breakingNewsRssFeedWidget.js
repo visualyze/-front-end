@@ -1,3 +1,8 @@
+// THIS IS NOT PRESENT ON THE WIDGET PICKER, BUT THE FUNCTIONALITY IS ALL HERE
+// IF YOU WANT TO ADD IT TO THE OPTIONS OF WIDGETS TO PICK FROM, YOU WILL NEED TO ADD
+// IT TO widgetPicker.js and tile.js
+// NOTE: this needs a lot more styling to make it work with the widget cards --> automated pagination
+
 import React from 'react';
 import Widget from '../widget.js';
 import $ from 'jquery';

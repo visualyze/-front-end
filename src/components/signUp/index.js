@@ -23,6 +23,11 @@ function SignUp({ onClick, error }) {
           onChange={event => {
             setPassword(event.target.value);
           }}
+          onKeyDown={e => {
+            if (e.key === 'Enter') {
+              onClick(username, password);
+            }
+          }}
           type="password"
           placeholder="password"
         />
