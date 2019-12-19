@@ -5,7 +5,7 @@ const About = () => {
   return (
     <>
       <div className="aboutSection1">
-        <h1>Visualyze</h1>
+        <h1>Who We Are</h1>
         <p>
           At Visualyze we provide our customers with a way to view data from all
           over the planet, in one spot. We offer full customization for what
@@ -17,13 +17,11 @@ const About = () => {
       <div className="aboutSection2">
         <h1>The Dashboard</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          After signing up, the dashboard automatically saves to your account.
+          This allows you to come back whenever to view all the data they want.
+          They are able to customize it with dozens of different widgets,
+          allowing for thousands of unique layouts. Drag and drop to resize.
+          Make your personal dashboard today!
         </p>
         <img src="/images/visualyze-mockup-1.png" />
       </div>
