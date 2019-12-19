@@ -21,7 +21,7 @@ class BreakingNewsRssFeedWidget extends Widget {
   handleRefresh = () => {
     // TODO: make this configurable
     $.ajax({
-      url: `http://localhost:3333/api/rssFeed`
+      url: `${process.env.REACT_APP_API_URL}api/rssFeed`
     }).done(result => {
       this.setState({ rss: result, isLoading: false });
       console.log('state rss', this.state.rss);
