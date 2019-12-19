@@ -5,15 +5,22 @@ body {
   background-size: 100% 80%;
   background-position: bottom;
 }
+
+.backgroundContainer {
+  display: block;
+  height: 40em;
+}
 #logoimg {
   position: relative;
+  display: block;
+  width: 60%;
   min-width: 60%;
   max-width: 60%;
 }
 
 #tagline {
   position: relative;
-  top: -120px;
+  display: block;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 150;
@@ -25,8 +32,8 @@ body {
 .button {
   backface-visibility: hidden;
   position: relative;
-  top: -20px;
-  left: 30.5%;
+  margin-top: 4em;
+  left: 11.5%;
   cursor: pointer;
   display: inline-block;
   white-space: nowrap;

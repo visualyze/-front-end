@@ -3,7 +3,8 @@ $google-blue: #4285f4;
 $button-active-blue: #1669f2;
 
 .google-btn {
-  width: 184px;
+  width: 230px;
+  min-width: 230px;
   height: 42px;
   background-color: $google-blue;
   border-radius: 2px;

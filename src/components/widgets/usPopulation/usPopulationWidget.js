@@ -58,7 +58,7 @@ class UsPopulation extends Widget {
         enabled: false
       },
       title: {
-        text: 'U.S. Population 2016'
+        text: 'U.S. POPULATION 2016'
       },
 
       xAxis: {
