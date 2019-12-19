@@ -27,17 +27,23 @@ class CityWeather extends Widget {
     $.ajax({
       url: `${process.env.REACT_APP_API_URL}api/fetchWeatherHighLow?lat=${latlong[0]}&long=${latlong[1]}`,
     }).done((result) => {
+      const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
       const tempHigh = [];
       const tempLow = [];
       const time = [];
       result.forEach((day) => {
         tempHigh.push(day.temperatureHigh);
         tempLow.push(day.temperatureLow);
-        time.push(day.time);
+        const date = new Date();
+        console.log(day.time);
+        date.setTime(day.time * 1000);
+        time.push(weekDays[date.getDay()]);
       });
 
-      // 1. we need to setState inside the callback.. not outside. This code here runs 1 seocnds AFTER the outside runs.
-      // if we put the setState outside then it will set empty arrays into the state .. not exactly correct
+      // 1. we need to setState inside the callback.. not outside.
+      // This code here runs 1 seconds AFTER the outside runs.
+      // if we put the setState outside then it will set empty
+      // arrays into the state..not exactly correct
       this.setState({
         tempHighWeather: tempHigh,
         tempLowWeather: tempLow,
