@@ -35,7 +35,6 @@ class CityWeather extends Widget {
         tempHigh.push(day.temperatureHigh);
         tempLow.push(day.temperatureLow);
         const date = new Date();
-        console.log(day.time);
         date.setTime(day.time * 1000);
         time.push(weekDays[date.getDay()]);
       });
