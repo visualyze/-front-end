@@ -12,15 +12,11 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
-import UserContext from './UserContext';
+import { AppContext } from './appContext';
 
 // dotenv.config();
 
-const globalUser = 'Can I see this?';
-
 export default class App extends React.Component {
-  static contextType = UserContext;
-
   constructor(props) {
     super(props);
 
