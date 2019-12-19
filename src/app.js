@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import appEvents from './appEvents.js';
 import { When } from './components/conditionals.js';
 import Dashboard from './components/dashboard/dashboard.js';
@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/storage';
-import UserContext from './UserContext';
+import { AppContext } from './appContext';
 
 // dotenv.config();
 
@@ -50,12 +50,10 @@ export default class App extends React.Component {
       return;
     }
 
-    this.state.user = firebase.auth().currentUser;
-    // firebase
-    //   .auth()
-    //   .signInWithEmailAndPassword('sarahg91587@gmail.com', 'password')
-    //   .then(result => this.setState({ user: result.user }))
-    //   .catch(error => console.log('login failed'));
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+      this.setState({ user: firebase.auth().currentUser });
+    }
   };
 
   saveDashboard = () => {
@@ -176,11 +174,8 @@ export default class App extends React.Component {
   };
 
   render() {
+    console.log(this.context);
     this.makeSureWereLoggedIn();
-
-    if (this.state.user === null) {
-      return <div>Need to login to use dashboard</div>;
-    }
 
     // This means we have a user and it's the first time we're here
     if (this.state.user !== null && this.firstLoadWithUser) {
