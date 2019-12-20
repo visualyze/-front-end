@@ -1,4 +1,5 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { AppContext } from '../../appContext';
 import './signout.scss';
 
@@ -11,15 +12,13 @@ function SignOut({ onClick }) {
       <span className="logoutSpan">
         You are logged in as {state.user.email}
       </span>
-      <button className="logoutScreenButtons">
-        <a className="buttonA" href="/dashboard">
-          Go to Dashboard
-        </a>
-      </button>
+      <Link className="logoutScreenButtons linkAdjustment" to="/dashboard">
+        Dashboard
+      </Link>
             
-      <button className="logoutScreenButtons" onClick={onClick}>
+      <a className="logoutScreenButtons linkAdjustment" onClick={onClick}>
         Logout
-      </button>
+      </a>
     </div>
   );
 }
