@@ -173,7 +173,6 @@ export default class App extends React.Component {
   };
 
   render() {
-    console.log(this.context);
     this.makeSureWereLoggedIn();
 
     // This means we have a user and it's the first time we're here

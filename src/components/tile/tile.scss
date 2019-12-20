@@ -1,5 +1,6 @@
 .tile {
-  background-color: #191919;
+  background-color: #19191990;
+  // background-image: src="";
   transition: background-color 0.4s;
   display: inline-block;
   position: relative;
@@ -16,11 +17,11 @@
 
 .plusDiv {
   background-image: url('/images/plus.png');
-  background-position: 50%;
+  background-position: 60%;
   background-repeat: no-repeat;
-  height: 32px;
+  height: 52px;
   transition: all 0.5s;
-  width: 32px;
+  width: 52px;
   background-size: 28px;
   filter: saturate(0%);
   top: calc(50% - (16px));
