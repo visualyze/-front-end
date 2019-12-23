@@ -30,7 +30,7 @@
 
 - `REACT_APP_API_URL=https://pc-sd-jk-visualyze.herokuapp.com/`
 
-### Firebase config file
+### Firebase config file for front end
 
 - The following keys are retrieved when setting up a Firebase account
 - The content should be saved in an object and exported as firebaseConfig
