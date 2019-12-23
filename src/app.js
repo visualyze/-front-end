@@ -186,7 +186,7 @@ export default class App extends React.Component {
       this.needsSave = false;
     }
 
-    console.log('Logged in with: ', this.state.user);
+    // console.log('Logged in with: ', this.state.user);
     return (
       <>
         <Dashboard

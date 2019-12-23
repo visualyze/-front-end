@@ -33,7 +33,7 @@ function SignUp({ onClick, error }) {
         />
         <button
           id="signupButton"
-          class="button2"
+          className="button2"
           disabled={isInvalid}
           onClick={() => {
             onClick(username, password);

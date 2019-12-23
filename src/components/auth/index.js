@@ -37,10 +37,10 @@ function Auth() {
 
   function setContext(authState) {
     setState(state => ({ ...state, user: authState.user }));
-    console.log('AUTHSTATE');
-    console.log(authState);
-    console.log('STATE');
-    console.log(state);
+    // console.log('AUTHSTATE');
+    // console.log(authState);
+    // console.log('STATE');
+    // console.log(state);
   }
 
   const requestLogin = useCallback((email, password) => {

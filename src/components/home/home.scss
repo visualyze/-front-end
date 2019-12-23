@@ -27,12 +27,13 @@ body {
   font-size: 2.5vw;
   margin-left: 3.5%;
   color: black;
+  margin-top: -130px;
 }
 
 .button {
   backface-visibility: hidden;
   position: relative;
-  margin-top: 4em;
+  margin-top: 3em;
   left: 11.5%;
   cursor: pointer;
   display: inline-block;

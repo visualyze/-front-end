@@ -21,7 +21,7 @@ class HourlyEarthqakesWidget extends Widget {
     $.ajax({
       url: `${process.env.REACT_APP_API_URL}api/hourlyEarthquakes`
     }).done(result => {
-      console.log('this is my result', result);
+      // console.log('this is my result', result);
       // We map [["123456": 1]] to [[123456: 1]]
       const series = result.map(pair => [Number.parseInt(pair[0]), pair[1]]);
       this.setState({ series: series, isLoading: false });

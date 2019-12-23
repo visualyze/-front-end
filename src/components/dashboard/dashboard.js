@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
           width={width}
           height={height}
           tilesPerRow={6}
-          rows={5}
+          rows={3}
           widgetConfigs={widgetConfigs}
         />
       </>

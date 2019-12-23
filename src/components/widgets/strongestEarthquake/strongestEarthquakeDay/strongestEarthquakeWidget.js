@@ -10,7 +10,7 @@ import '../../../dark-unica.scss';
 import './strongestEarthquakeWidget.scss';
 
 const url = `${process.env.REACT_APP_API_URL}api/strongestEarthquake`;
-console.log(url);
+// console.log(url);
 
 // eslint-disable-next-line new-cap
 HighchartsMore(Highcharts);

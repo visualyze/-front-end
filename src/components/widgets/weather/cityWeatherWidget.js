@@ -56,11 +56,11 @@ class CityWeather extends Widget {
     $.ajax({
       url: `${process.env.REACT_APP_API_URL}api/fetchLatLong?city=${city}`
     }).done(result => {
-      console.log('This is the result of fetch geo data', result);
+      // console.log('This is the result of fetch geo data', result);
       const newConfig = Object.assign({}, this.props.config);
       newConfig.latlong = result;
       appEvents.onUpdateWidgetConfig(newConfig);
-      console.log('config data', this.props.config);
+      // console.log('config data', this.props.config);
       this.fetchWeatherData(result);
     });
   }
@@ -122,7 +122,7 @@ class CityWeather extends Widget {
       config.latlong !== undefined &&
       this.state.tempHighWeather === null
     ) {
-      console.log('weather data');
+      // console.log('weather data');
       this.fetchWeatherData(config.latlong);
       return <div>Fetching weather data for {config.city}</div>;
     }

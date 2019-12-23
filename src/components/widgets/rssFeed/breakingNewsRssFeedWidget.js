@@ -24,7 +24,7 @@ class BreakingNewsRssFeedWidget extends Widget {
       url: `${process.env.REACT_APP_API_URL}api/rssFeed`
     }).done(result => {
       this.setState({ rss: result, isLoading: false });
-      console.log('state rss', this.state.rss);
+      // console.log('state rss', this.state.rss);
     });
   };
 

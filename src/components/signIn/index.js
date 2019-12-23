@@ -25,7 +25,7 @@ function SignIn({ onClick, error }) {
         }}
       />
       <button
-        class="button2"
+        className="button2"
         onClick={() => {
           onClick(username, password);
         }}
