@@ -13,7 +13,7 @@
     "dotenv": "^8.2.0",
     "firebase": "^7.6.0",
     "firebaseui": "^4.3.0",
-    "highcharts": "8.0.0",
+    "highcharts": "9.0.0",
     "highcharts-react-official": "2.2.2",
     "jquery": "3.4.1",
     "lint": "^0.7.0",
